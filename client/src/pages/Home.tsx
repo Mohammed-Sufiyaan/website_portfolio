@@ -11,6 +11,23 @@ import { Card } from "@/components/ui/card";
 import ThemeToggle from "@/components/ThemeToggle";
 import SkillsCarousel from "@/components/SkillsCarousel";
 
+const completedCourses = [
+  { code: "CSC108H5", title: "Introduction to Computer Programming" },
+  { code: "CSC148H5", title: "Introduction to Computer Science" },
+  { code: "CSC207H5", title: "Software Design" },
+  { code: "CSC209H5", title: "Software Tools and Systems Programming" },
+  { code: "CSC236H5", title: "Introduction to the Theory of Computation" },
+  { code: "CSC263H5", title: "Data Structures and Analysis" },
+  { code: "CSC347H5", title: "Introduction to Information Security" },
+  { code: "CSC309H5", title: "Programming on the Web" },
+];
+
+const currentCourses = [
+  { code: "CSC311H5", title: "Introduction to Machine Learning" },
+  { code: "CSC343H5", title: "Introduction to Databases" },
+  { code: "CSC301H5", title: "Introduction to Software Engineering" },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-smooth overflow-x-hidden">
@@ -263,16 +280,20 @@ export default function Home() {
                   <div className="mb-4">
                     <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">Completed Coursework</p>
                     <div className="flex flex-wrap gap-2">
-                      {["CSC108", "CSC148", "CSC207", "CSC209", "CSC236", "CSC263", "CSC309", "CSC347"].map((course) => (
-                        <span key={course} className="education-badge">{course}</span>
+                      {completedCourses.map(course => (
+                        <span key={course.code} className="education-badge">
+                          {course.code} - {course.title}
+                        </span>
                       ))}
                     </div>
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">Current Coursework</p>
                     <div className="flex flex-wrap gap-2">
-                      {["CSC311 (ML)", "CSC343 (DB)", "CSC301 (SE)"].map((course) => (
-                        <span key={course} className="education-badge">{course}</span>
+                      {currentCourses.map(course => (
+                        <span key={course.code} className="education-badge">
+                          {course.code} - {course.title}
+                        </span>
                       ))}
                     </div>
                   </div>
