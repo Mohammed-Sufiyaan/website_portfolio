@@ -7,8 +7,13 @@ import { defineConfig } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime()];
+const base = process.env.VITE_BASE ?? "/";
+const outDir =
+  process.env.VITE_OUT_DIR ??
+  path.resolve(import.meta.dirname, "dist", "public");
 
 export default defineConfig({
+  base,
   plugins,
   resolve: {
     alias: {
@@ -20,7 +25,7 @@ export default defineConfig({
   envDir: path.resolve(import.meta.dirname),
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir,
     emptyOutDir: true,
   },
   server: {
